@@ -83,6 +83,77 @@ Se il tuo username GitHub è `F3rryX` e il repository si chiama `Desideria`, il 
 https://f3rryx.github.io/Desideria/
 ```
 
+## ⚙️ Configurazione Salvataggio su GitHub
+
+Per permettere il salvataggio automatico dei risultati su GitHub, segui questi passaggi:
+
+### 1. Creare un Personal Access Token
+
+1. Vai su GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Clicca su "Generate new token (classic)"
+3. Dai un nome al token (es. "Desideria Quiz Token")
+4. Seleziona i permessi:
+   - ✅ `public_repo` (per repository pubblici)
+   - ✅ `workflow` (per triggare GitHub Actions)
+5. Clicca su "Generate token"
+6. **COPIA IL TOKEN** (lo vedrai solo una volta!)
+
+### 2. Aggiungere il Token ai GitHub Secrets
+
+1. Vai nelle Settings del repository GitHub
+2. Vai su "Secrets and variables" → "Actions"
+3. Clicca su "New repository secret"
+4. Nome: `TOKENDESIDERIA`
+5. Value: incolla il token creato al passo 1
+6. Clicca su "Add secret"
+
+### 3. Configurare il Token nel Quiz (per Trigger)
+
+Apri il quiz nel browser e nella **Console JavaScript** (premi F12) esegui:
+
+```javascript
+configureGitHubToken('ghp_IL_TUO_TOKEN_QUI')
+```
+
+Sostituisci `ghp_IL_TUO_TOKEN_QUI` con il token che hai copiato al passo 1.
+
+Per verificare che il token sia configurato correttamente:
+
+```javascript
+checkGitHubToken()
+```
+
+### Come Funziona il Salvataggio
+
+1. Quando un giocatore finisce una partita, il quiz raccoglie i dati (nome, tempo, punteggio, ecc.)
+2. Il JavaScript nel browser triggera un **GitHub Action** tramite l'API `repository_dispatch`
+3. Il GitHub Action (che usa il secret `TOKENDESIDERIA`) aggiorna i file CSV nel repository:
+   - `CSV/Tutte.csv` - tutte le partite
+   - `CSV/Torneo.csv` - solo i migliori tempi in modalità torneo
+   - `CSV/Custom.csv` - tutte le partite in modalità custom
+4. I risultati sono salvati permanentemente su GitHub
+
+### Formato CSV
+
+I file CSV hanno questa struttura:
+
+```
+Nome;Tempo;Corrette;Percentuale;Data;Domande;TempoPerDomanda
+Mario;45.2;10/10;100%;01/01/2024, 12:00:00;10;4.52
+Luigi;52.8;9/10;90%;01/01/2024, 12:15:00;10;5.28
+```
+
+### Ricerca Risultati
+
+La funzione di ricerca legge direttamente i file CSV da GitHub (raw) **senza bisogno di autenticazione**, quindi funziona sempre per tutti gli utenti.
+
+### Sicurezza
+
+- ⚠️ Il token GitHub viene salvato in **localStorage** del browser
+- ✅ Il token NON viene mai committato nel repository (`.gitignore`)
+- ✅ Il GitHub Secret `TOKENDESIDERIA` viene usato solo dai workflow GitHub Actions
+- ✅ I file `config.js` con dati sensibili sono esclusi dal repository
+
 ## 📁 Struttura del Progetto
 
 ```

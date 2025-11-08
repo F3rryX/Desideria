@@ -12,3 +12,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Configuration files with sensitive data
+Script/config.js
+config.js
+
