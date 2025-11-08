@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pizze Desideria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍕 Quiz Pizze Desideria</h1>
+            <p class="subtitle">Impara gli ingredienti delle pizze divertendoti!</p>
+        </header>
+
+        <div id="setup-screen" class="screen active">
+            <div class="setup-box">
+                <h2>Configura il tuo Quiz</h2>
+                
+                <div class="form-group">
+                    <label for="category-select">Categoria:</label>
+                    <select id="category-select">
+                        <option value="all">Tutte le Pizze</option>
+                        <option value="classiche">Solo Classiche</option>
+                        <option value="bianche">Solo Bianche</option>
+                        <option value="calzoni">Solo Calzoni</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="num-questions">Numero di domande:</label>
+                    <input type="number" id="num-questions" min="1" max="50" value="10">
+                </div>
+
+                <div class="form-group">
+                    <label for="question-type">Tipo di domanda:</label>
+                    <select id="question-type">
+                        <option value="ingredients">Quali sono gli ingredienti?</option>
+                        <option value="pizza">Quale pizza ha questi ingredienti?</option>
+                        <option value="confusing">Trova l'ingrediente sbagliato</option>
+                        <option value="mixed">Misto</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="player-name">Il tuo nome (per la classifica):</label>
+                    <input type="text" id="player-name" placeholder="Inserisci il tuo nome" value="">
+                </div>
+
+                <button id="start-btn" class="btn btn-primary">Inizia Quiz</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="timer-container">
+                    <div class="timer-circle">
+                        <svg class="timer-svg" viewBox="0 0 100 100">
+                            <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                            <circle id="timer-progress" class="timer-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <span id="timer-text" class="timer-text">10</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="quiz-info">
+                    <span id="question-counter">Domanda 1 di 10</span>
+                    <span id="score">Punteggio: 0</span>
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h2 id="question-text">Caricamento...</h2>
+                <div id="options-container" class="options-container">
+                    <!-- Le opzioni verranno inserite qui dinamicamente -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button id="next-btn" class="btn btn-secondary" style="display: none;">Prossima Domanda</button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <div class="results-box">
+                <h2>🎉 Quiz Completato!</h2>
+                <div class="final-score">
+                    <p class="score-label">Il tuo punteggio:</p>
+                    <p id="final-score" class="score-number">0/10</p>
+                    <p id="score-percentage" class="score-percentage">0%</p>
+                </div>
+                
+                <div id="score-message" class="score-message"></div>
+
+                <div class="time-stats">
+                    <p>⏱️ Tempo totale: <span id="total-time">0</span> secondi</p>
+                    <p id="record-message" class="record-message"></p>
+                </div>
+
+                <div class="leaderboard-section">
+                    <h3>🏆 Classifica Record</h3>
+                    <div id="leaderboard"></div>
+                    <button id="download-records-btn" class="btn btn-secondary" style="margin-top: 15px;">📥 Scarica Record (CSV)</button>
+                </div>
+
+                <div class="review-section" id="review-section">
+                    <h3>Riepilogo Risposte:</h3>
+                    <div id="answers-review"></div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="retry-btn" class="btn btn-primary">Riprova</button>
+                    <button id="new-quiz-btn" class="btn btn-secondary">Nuovo Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
