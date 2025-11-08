@@ -31,7 +31,6 @@ const tournamentSettings = document.getElementById('tournament-settings');
 const customSettings = document.getElementById('custom-settings');
 
 // Tournament elements
-const tournamentCategory = document.getElementById('tournament-category');
 const tournamentPlayerName = document.getElementById('tournament-player-name');
 const startTournamentBtn = document.getElementById('start-tournament-btn');
 const backFromTournamentBtn = document.getElementById('back-from-tournament-btn');
@@ -139,7 +138,7 @@ function startTournamentQuiz() {
     }
     
     currentQuiz.mode = 'tournament';
-    currentQuiz.category = tournamentCategory.value;
+    currentQuiz.category = 'all'; // Sempre tutte le pizze
     currentQuiz.numQuestions = 15;
     currentQuiz.questionType = 'mixed';
     currentQuiz.playerName = playerName;
