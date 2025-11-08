@@ -45,11 +45,31 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="timer-seconds">Tempo per domanda (secondi):</label>
+                    <select id="timer-seconds">
+                        <option value="5">5 secondi</option>
+                        <option value="10" selected>10 secondi</option>
+                        <option value="15">15 secondi</option>
+                        <option value="20">20 secondi</option>
+                        <option value="30">30 secondi</option>
+                        <option value="60">60 secondi</option>
+                        <option value="0">Nessun limite</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="player-name">Il tuo nome (per la classifica):</label>
                     <input type="text" id="player-name" placeholder="Inserisci il tuo nome" value="">
                 </div>
 
                 <button id="start-btn" class="btn btn-primary">Inizia Quiz</button>
+                
+                <!-- Tabella Record nella Home -->
+                <div class="home-leaderboard">
+                    <h3>🏆 Record Migliori Tempi</h3>
+                    <p class="home-leaderboard-subtitle">I tempi più veloci per quiz perfetti (100% corretto)</p>
+                    <div id="home-leaderboard-container"></div>
+                </div>
             </div>
         </div>
 

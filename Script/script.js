@@ -26,8 +26,10 @@ const resultsScreen = document.getElementById('results-screen');
 const categorySelect = document.getElementById('category-select');
 const numQuestionsInput = document.getElementById('num-questions');
 const questionTypeSelect = document.getElementById('question-type');
+const timerSecondsSelect = document.getElementById('timer-seconds');
 const playerNameInput = document.getElementById('player-name');
 const startBtn = document.getElementById('start-btn');
+const homeLeaderboardContainer = document.getElementById('home-leaderboard-container');
 
 const timerText = document.getElementById('timer-text');
 const timerProgress = document.getElementById('timer-progress');
@@ -56,6 +58,9 @@ retryBtn.addEventListener('click', retryQuiz);
 newQuizBtn.addEventListener('click', newQuiz);
 downloadRecordsBtn.addEventListener('click', downloadRecordsCSV);
 
+// Carica la classifica nella home all'avvio
+window.addEventListener('DOMContentLoaded', displayHomeLeaderboard);
+
 // Funzione per iniziare il quiz
 function startQuiz() {
     currentQuiz.category = categorySelect.value;
@@ -66,6 +71,9 @@ function startQuiz() {
     currentQuiz.score = 0;
     currentQuiz.answers = [];
     currentQuiz.startTime = Date.now();
+    
+    // Imposta il tempo del timer
+    timer.totalSeconds = parseInt(timerSecondsSelect.value);
 
     // Genera le domande
     currentQuiz.questions = generateQuestions(
@@ -95,8 +103,8 @@ function generateQuestions(category, numQuestions, questionType) {
     
     selectedPizzas.forEach(pizza => {
         // Salta le pizze speciali senza ingredienti specifici
-        if (pizza.ingredients.includes("Specialità della casa") || 
-            pizza.ingredients.includes("Specialità del Pizzaiolo")) {
+        if (pizza.ingredients.includes("specialità della casa") || 
+            pizza.ingredients.includes("specialità del pizzaiolo")) {
             return;
         }
 
@@ -146,8 +154,8 @@ function generateIngredientOptions(correctPizza, allPizzas) {
     // Filtra pizze con ingredienti diversi e non speciali
     const otherPizzas = allPizzas.filter(p => 
         p.name !== correctPizza.name && 
-        !p.ingredients.includes("Specialità della casa") &&
-        !p.ingredients.includes("Specialità del Pizzaiolo")
+        !p.ingredients.includes("specialità della casa") &&
+        !p.ingredients.includes("specialità del pizzaiolo")
     );
     
     // Aggiungi 3 opzioni sbagliate
@@ -179,8 +187,8 @@ function generateConfusingOptions(correctPizza, allPizzas) {
     });
     const ingredientsArray = Array.from(allIngredients).filter(ing => 
         !correctIngredients.includes(ing) &&
-        ing !== "Specialità della casa" &&
-        ing !== "Specialità del Pizzaiolo"
+        ing !== "specialità della casa" &&
+        ing !== "specialità del pizzaiolo"
     );
     
     // Genera 3 opzioni sbagliate sostituendo un ingrediente casuale
@@ -203,8 +211,8 @@ function generatePizzaOptions(correctPizza, allPizzas) {
     // Filtra altre pizze
     const otherPizzas = allPizzas.filter(p => 
         p.name !== correctPizza.name &&
-        !p.ingredients.includes("Specialità della casa") &&
-        !p.ingredients.includes("Specialità del Pizzaiolo")
+        !p.ingredients.includes("specialità della casa") &&
+        !p.ingredients.includes("specialità del pizzaiolo")
     );
     
     // Aggiungi 3 opzioni sbagliate
@@ -265,8 +273,15 @@ function displayQuestion() {
 
 // Funzione per avviare il timer
 function startTimer() {
-    timer.secondsLeft = 10;
-    timer.totalSeconds = 10;
+    timer.secondsLeft = timer.totalSeconds;
+    
+    // Se il timer è 0, non mostrare il timer
+    if (timer.totalSeconds === 0) {
+        timerText.textContent = '∞';
+        timerProgress.style.strokeDashoffset = 0;
+        return;
+    }
+    
     updateTimerDisplay();
     
     if (timer.interval) {
@@ -615,7 +630,59 @@ function retryQuiz() {
 // Funzione per creare un nuovo quiz
 function newQuiz() {
     stopTimer();
+    displayHomeLeaderboard(); // Aggiorna la classifica quando si torna alla home
     showScreen('setup');
+}
+
+// Funzione per visualizzare la classifica nella home (migliori tempi per quiz perfetti)
+function displayHomeLeaderboard() {
+    const records = getRecords();
+    const perfectRecords = [];
+    
+    // Trova tutti i record con punteggio perfetto (100%)
+    Object.keys(records).forEach(key => {
+        records[key].forEach(record => {
+            if (record.score === record.totalQuestions) {
+                perfectRecords.push({
+                    ...record,
+                    quizKey: key
+                });
+            }
+        });
+    });
+    
+    // Ordina per tempo (più veloce prima)
+    perfectRecords.sort((a, b) => a.time - b.time);
+    
+    // Prendi solo i top 5
+    const topRecords = perfectRecords.slice(0, 5);
+    
+    if (topRecords.length === 0) {
+        homeLeaderboardContainer.innerHTML = '<p class="no-records">Nessun quiz perfetto completato ancora. Inizia a giocare!</p>';
+        return;
+    }
+    
+    homeLeaderboardContainer.innerHTML = '';
+    topRecords.forEach((record, index) => {
+        const item = document.createElement('div');
+        item.className = `home-record-item ${index === 0 ? 'fastest' : ''}`;
+        
+        const medal = index === 0 ? '⚡' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}.`;
+        const categoryName = getCategoryName(record.category);
+        
+        item.innerHTML = `
+            <span style="font-size: 1.5rem; margin-right: 10px;">${medal}</span>
+            <div class="home-record-config">
+                <strong>${record.numQuestions} domande</strong> - ${categoryName}
+            </div>
+            <div class="home-record-stats">
+                <div class="home-record-time">⏱️ ${record.time}s</div>
+                <div class="home-record-player">${record.player}</div>
+            </div>
+        `;
+        
+        homeLeaderboardContainer.appendChild(item);
+    });
 }
 
 // Funzione per mostrare uno schermo

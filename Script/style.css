@@ -142,6 +142,77 @@ header h1 {
     background: #e0e0e0;
 }
 
+/* Home Leaderboard */
+.home-leaderboard {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.home-leaderboard h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.home-leaderboard-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.home-record-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.home-record-item.fastest {
+    background: linear-gradient(90deg, #fff9e6 0%, #f8f9fa 100%);
+    border-left-color: #ffd700;
+}
+
+.home-record-config {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.home-record-config strong {
+    color: #333;
+}
+
+.home-record-stats {
+    text-align: right;
+}
+
+.home-record-time {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.1rem;
+}
+
+.home-record-player {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.no-records {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-style: italic;
+}
+
 /* Quiz Screen */
 .quiz-header {
     background: white;
