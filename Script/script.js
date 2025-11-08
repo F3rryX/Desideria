@@ -33,6 +33,7 @@ const resultsScreen = document.getElementById('results-screen');
 // Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
+const themeText = document.querySelector('.theme-text');
 
 // Mode selection elements
 const tournamentModeCard = document.getElementById('tournament-mode-card');
@@ -96,10 +97,12 @@ themeToggle.addEventListener('click', () => {
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDark);
     themeIcon.textContent = isDark ? '☀️' : '🌙';
+    themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
 });
 
-// Set initial icon
+// Set initial icon and text
 themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
 
 // Mode selection
 tournamentModeCard.addEventListener('click', () => showModeSettings('tournament'));
