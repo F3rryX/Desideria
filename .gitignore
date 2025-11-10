@@ -17,3 +17,5 @@ npm-debug.log*
 Script/config.js
 config.js
 
+# Environment variables
+.env
