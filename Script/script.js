@@ -714,8 +714,9 @@ async function displayLeaderboard() {
         leaderboard.innerHTML = '<div class="loading">🔍 Caricamento classifica...</div>';
         
         try {
-            // Carica Torneo.csv da GitHub
-            const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Torneo.csv`);
+            // Carica Torneo.csv da GitHub con cache busting
+            const cacheBuster = new Date().getTime();
+            const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Torneo.csv?t=${cacheBuster}`);
             
             if (!response.ok) {
                 throw new Error(`Failed to fetch CSV: ${response.status}`);
@@ -951,8 +952,9 @@ async function displayTournamentLeaderboard() {
     tournamentLeaderboardContainer.innerHTML = '<div class="loading">🔍 Caricamento classifica...</div>';
     
     try {
-        // Carica Torneo.csv direttamente dal raw GitHub
-        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Torneo.csv`);
+        // Carica Torneo.csv direttamente dal raw GitHub con cache busting
+        const cacheBuster = new Date().getTime();
+        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Torneo.csv?t=${cacheBuster}`);
         
         if (!response.ok) {
             throw new Error(`Failed to fetch CSV: ${response.status}`);
@@ -1193,8 +1195,9 @@ async function performSearch() {
     searchResultsContainer.innerHTML = '<div class="loading">🔍 Ricerca in corso...</div>';
     
     try {
-        // Carica Tutte.csv direttamente dal raw GitHub (nessun token richiesto)
-        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Tutte.csv`);
+        // Carica Tutte.csv direttamente dal raw GitHub con cache busting
+        const cacheBuster = new Date().getTime();
+        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Tutte.csv?t=${cacheBuster}`);
         
         if (!response.ok) {
             throw new Error(`Failed to fetch CSV: ${response.status}`);
@@ -1231,7 +1234,8 @@ async function displaySearchResults(results) {
     // Carica Torneo.csv per determinare quale partita è torneo
     let tournamentData = '';
     try {
-        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Torneo.csv`);
+        const cacheBuster = new Date().getTime();
+        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/CSV/Torneo.csv?t=${cacheBuster}`);
         if (response.ok) {
             tournamentData = await response.text();
         }
