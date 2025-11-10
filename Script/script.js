@@ -1093,8 +1093,7 @@ const GITHUB_OWNER = 'F3rryX';
 const GITHUB_REPO = 'Desideria';
 // Token pubblico Base64 (decodificato runtime) - ha solo permessi public_repo + workflow
 // NOTA: Il browser non può leggere .env - questo token deve essere codificato qui
-const encodedToken = 'Z2hwX0FZb3pydVZ1eVVzZGVRWXZKaVg4d2ZtMTBSeFRGeDFGdlQxdA=='; // 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
-const TOKEN = atob(encodedToken);
+const TOKEN = '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';
 
 
 // ========== CSV MANAGEMENT ==========

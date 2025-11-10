@@ -477,76 +477,14 @@ body.dark-mode .home-record-item.fastest {
     position: relative;
 }
 
-/* Quiz Sidebar (right area) - Posizionato fisso in basso a destra */
+/* Quiz Sidebar - nascosta, ora usiamo il bottone inline */
 .quiz-sidebar {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    z-index: 1000;
-}
-
-/* Navigation Arrow in Sidebar - Design moderno e accattivante */
-.nav-arrow-sidebar {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-arrow-sidebar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.nav-arrow-sidebar:hover:not(:disabled) {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.7);
-}
-
-.nav-arrow-sidebar:hover:not(:disabled)::before {
-    opacity: 1;
-}
-
-.nav-arrow-sidebar:disabled {
-    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
-    cursor: not-allowed;
-    opacity: 0.6;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transform: none;
-}
-
-/* Testo nascosto su desktop, mostra solo freccia */
-.nav-arrow-sidebar .arrow-text {
     display: none;
 }
 
-.nav-arrow-sidebar .arrow-icon {
-    font-size: 1.8rem;
-}
-
-.nav-arrow-sidebar span:not(.nav-text) {
-    font-size: 1.8rem;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+/* Navigation Arrow in Sidebar - non più usato */
+.nav-arrow-sidebar {
+    display: none;
 }
 
 /* Old navigation arrows removed */
@@ -650,11 +588,56 @@ body.dark-mode .home-record-item.fastest {
     transition: width 0.3s ease;
 }
 
+/* Quiz header row - counter info + next button */
+.quiz-header-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .quiz-info {
+    flex: 2; /* 2/3 dello spazio */
     display: flex;
     justify-content: space-between;
     font-weight: 600;
     color: var(--text-primary);
+}
+
+/* Next button inline (desktop) - 1/3 dello spazio, più piccolo */
+.nav-arrow-inline {
+    flex: 0 0 50px; /* Dimensione fissa 50px */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav-arrow-inline:hover:not(:disabled) {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.nav-arrow-inline:disabled {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-arrow-inline span {
+    font-size: 1.3rem;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .question-box {

@@ -151,9 +151,15 @@
                 <div class="progress-bar">
                     <div id="progress-fill" class="progress-fill"></div>
                 </div>
-                <div class="quiz-info">
-                    <span id="question-counter">Domanda 1 di 10</span>
-                    <span id="score">Punteggio: 0</span>
+                <div class="quiz-header-row">
+                    <div class="quiz-info">
+                        <span id="question-counter">Domanda 1 di 10</span>
+                        <span id="score">Punteggio: 0</span>
+                    </div>
+                    <!-- Desktop next button inline with info -->
+                    <button id="next-btn" class="nav-arrow-inline" style="display: none;">
+                        <span>▶</span>
+                    </button>
                 </div>
             </div>
 
@@ -168,14 +174,6 @@
                     <div class="quiz-controls-mobile">
                         <button id="next-btn-mobile" class="btn btn-secondary" style="display: none;">Prossima Domanda ➜</button>
                     </div>
-                </div>
-
-                <!-- Navigation button in the right sidebar -->
-                <div class="quiz-sidebar">
-                    <button id="next-btn" class="nav-arrow-sidebar" style="display: none;">
-                        <span class="nav-text">Prossima</span>
-                        <span>▶</span>
-                    </button>
                 </div>
             </div>
         </div>
