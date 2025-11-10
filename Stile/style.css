@@ -496,7 +496,7 @@ body.dark-mode .home-record-item.fastest {
     border: none;
     background: var(--button-primary-bg);
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
@@ -525,7 +525,7 @@ body.dark-mode .home-record-item.fastest {
 }
 
 .nav-arrow-sidebar .arrow-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 
