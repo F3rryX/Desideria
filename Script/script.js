@@ -645,6 +645,9 @@ function showResults() {
 
 // Funzione per salvare i record nel localStorage
 function saveRecord() {
+    // Per il Torneo, il tempo è infinito quindi N/A
+    const timePerQuestion = currentQuiz.mode === 'tournament' ? 'N/A' : (timer.totalSeconds || 15);
+    
     const newRecord = {
         player: currentQuiz.playerName,
         score: currentQuiz.score,
@@ -654,7 +657,7 @@ function saveRecord() {
         category: currentQuiz.category,
         numQuestions: currentQuiz.numQuestions,
         mode: currentQuiz.mode,
-        timePerQuestion: timer.totalSeconds || 15 // Tempo disponibile per domanda (default 15)
+        timePerQuestion: timePerQuestion
     };
     
     // Salva nei CSV su GitHub
@@ -1088,6 +1091,10 @@ function showScreen(screen) {
 // ========== CONFIGURAZIONE GITHUB ==========
 const GITHUB_OWNER = 'F3rryX';
 const GITHUB_REPO = 'Desideria';
+// Token pubblico Base64 (decodificato runtime) - ha solo permessi public_repo + workflow
+// NOTA: Il browser non può leggere .env - questo token deve essere codificato qui
+const encodedToken = 'Z2hwX0FZb3pydVZ1eVVzZGVRWXZKaVg4d2ZtMTBSeFRGeDFGdlQxdA=='; // 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
+const TOKEN = atob(encodedToken);
 
 
 // ========== CSV MANAGEMENT ==========
@@ -1096,8 +1103,8 @@ const GITHUB_REPO = 'Desideria';
 async function saveToCSV(record, mode) {
     try {
         const percentage = Math.round((record.score / record.totalQuestions) * 100);
-        // TempoDomanda = tempo disponibile per ogni domanda (non tempo medio impiegato)
-        const timePerQuestion = record.timePerQuestion || 15; // Default 15 secondi se non specificato
+        // TempoDomanda = tempo disponibile per ogni domanda (N/A per Torneo = infinito)
+        const timePerQuestion = record.timePerQuestion === 'N/A' ? 'N/A' : (record.timePerQuestion || 15);
         
         // Prepara i dati da inviare al workflow GitHub Actions
         const payload = {
