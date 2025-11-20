@@ -1,0 +1,57 @@
+5 Formaggi
+9,00€
+Mozzarella, gorgonzola, grana, speck e rucola
+Blues
+8,50€
+Mozzarella, pomodoro a fette, melanzane, acciughe e origano
+Cicciolina
+8,00€
+Mozzarella, ciccioli, gorgonzola e grana
+Crema di Asparagi
+8,50€
+Mozzarella, asparagi, gorgonzola e grana
+Crema di carciofi
+8,50€
+Mozzarella, carciofi, gorgonzola e grana
+Crema di Gamberetti
+9,00€
+Mozzarella, gamberetti, pomodorini, rucola, grana
+Crema di Noci
+9,00€
+Mozzarella, noci, panna, gorgonzola, grana, speck e radicchio
+Crema di Peperoni
+9,00€
+Mozzarella, peperoni, pancetta arrotolata, gorgonzola e grana
+Crema di Pistacchio
+10,00€
+Mozzarella, panna, grana, prosciutto cotto e crema di pistacchio
+Crema di Radicchio
+9,00€
+Mozzarella, pancetta arrotolata, radicchio, gorgonzola, grana e glassa di aceto balsamico
+Crema di Zucca
+8,50€
+Mozzarella, zucca, gorgonzola, grana e rucola
+Friarielli
+8,50€
+Bufala, friarielli e salsiccia
+Panna
+8,50€
+Mozzarella, panna, prosciutto cotto, funghi freschi e grana
+Patacca
+8,50€
+Mozzarella, pancetta arrotolata, patate lesse e grana
+Porcini tartufata
+9,00€
+Mozzarella, porcini, crema di tartufo e grana
+Rucola
+8,00€
+Mozzarella, gorgonzola, stracchino, grana e rucola
+Scamorza
+9,00€
+Mozzarella, scamorza affumicata e speck
+Sitting Bull
+8,50€
+Bufala, acciughe, pelati e origano
+Vecchia Modena
+8,00€
+Mozzarella, pancetta arrotolata, grana e glassa di aceto balsamico

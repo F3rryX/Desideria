@@ -1,0 +1,102 @@
+Marinara
+5,00€
+Pomodoro, aglio e origano
+Capricciosa
+7,50€
+Pomodoro, mozzarella, prosciutto cotto, funghi e carciofini
+Carciofi
+6,50€
+Pomodoro, mozzarella e carciofini
+Funghi
+6,50€
+Pomodoro, mozzarella e funghi
+Funghi freschi
+6,00€
+Pomodoro, mozzarella e funghi freschi
+Funghi porcini
+8,00€
+Pomodoro, mozzarella e funghi porcini
+Margherita
+6,00€
+Pomodoro e mozzarella
+Napoli
+7,00€
+Pomodoro, mozzarella, acciughe e origano
+Prosciutto cotto
+6,50€
+Pomodoro, mozzarella e prosciutto cotto
+Prosciutto cotto e funghi
+7,00€
+Pomodoro, mozzarella, prosciutto cotto e funghi
+Salsiccia
+6,50€
+Pomodoro, mozzarella e salsiccia
+4 Formaggi
+7,50€
+Pomodoro, mozzarella e latteria
+4 Stagioni
+8,00€
+Pomodoro, mozzarella, prosciutto cotto, funghi e carciofi
+Asparagi
+6,50€
+Pomodoro, mozzarella e asparagi
+Bresaola
+10,00€
+Pomodoro, bufala, bresaola, rucola e grana
+Bufala
+7,00€
+Pomodoro e bufala
+Cipolla
+6,50€
+Pomodoro, mozzarella e cipolla
+Del Vecchio
+9,00€
+Pomodoro, mozzarella, salmone e gamberetti
+Diavola
+6,50€
+Pomodoro, mozzarella e salame piccante
+Gamberetti
+8,00€
+Pomodoro, mozzarella e gamberetti
+Gorgonzola
+7,00€
+Pomodoro, mozzarella e gorgonzola
+Melanzane
+6,50€
+Pomodoro, mozzarella e melanzane
+Pancetta affumicata
+6,50€
+Pomodoro, mozzarella e pancetta affumicata
+Pancetta arrotolata
+6,50€
+Pomodoro, mozzarella e pancetta arrotolata
+Peperoni
+6,50€
+Pomodoro, mozzarella e peperoni
+Prosciutto Crudo
+8,50€
+Pomodoro, mozzarella e prosciutto crudo
+Pugliese
+7,00€
+Pomodoro, mozzarella, salame piccante e cipolla
+Salmone
+8,00€
+Pomodoro, mozzarella e salmone
+Spinaci
+6,50€
+Pomodoro, mozzarella e spinaci
+Stracchino
+6,50€
+Pomodoro, mozzarella e stracchino
+Tonno
+6,50€
+Pomodoro, mozzarella e tonno
+Tonno e Cipolla
+7,00€
+Pomodoro, mozzarella, tonno e cipolla
+Verdure
+8,50€
+Pomodoro, mozzarella, verdure di stagione e grana
+Wurstel
+6,50€
+Pomodoro, mozzarella e wurstel

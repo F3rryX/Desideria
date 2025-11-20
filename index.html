@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pizzeria Desideria</title>
+    <link rel="stylesheet" href="Stile/quiz-style.css">
+</head>
+<body>
+    <!-- Schermata iniziale -->
+    <div id="home-screen" class="screen active">
+        <div class="container">
+            <img src="Stile/Desideria3.png" alt="Desideria Pizzeria" class="logo">
+            <h1>Quiz Pizzeria Desideria</h1>
+            <p class="subtitle">Metti alla prova la tua conoscenza delle nostre pizze!</p>
+            
+            <div class="mode-selection">
+                <button class="btn btn-primary" onclick="selectMode('pizzeria')">
+                    <span class="btn-icon">🍕</span>
+                    <span class="btn-text">Modalità Pizzeria</span>
+                    <span class="btn-desc">15 secondi per domanda</span>
+                </button>
+                
+                <button class="btn btn-secondary" onclick="selectMode('ristorante')">
+                    <span class="btn-icon">🍽️</span>
+                    <span class="btn-text">Modalità Ristorante</span>
+                    <span class="btn-desc">Work in Progress</span>
+                </button>
+                
+                <button class="btn btn-secondary" onclick="selectMode('custom')">
+                    <span class="btn-icon">⚙️</span>
+                    <span class="btn-text">Modalità Custom</span>
+                    <span class="btn-desc">Personalizza il tuo quiz</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schermata impostazioni custom -->
+    <div id="custom-screen" class="screen">
+        <div class="container">
+            <img src="Stile/Desideria3.png" alt="Desideria Pizzeria" class="logo-small">
+            <h2>Impostazioni Custom</h2>
+            
+            <div class="settings-form">
+                <div class="form-group">
+                    <label for="num-questions">Numero di domande:</label>
+                    <input type="number" id="num-questions" min="5" max="50" value="15">
+                </div>
+                
+                <div class="form-group">
+                    <label for="time-per-question">Tempo per domanda (secondi):</label>
+                    <input type="number" id="time-per-question" min="5" max="120" value="30">
+                </div>
+                
+                <div class="form-group">
+                    <label>Difficoltà Pizze:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="difficulty-easy" checked>
+                            <span>Facili (Classiche)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="difficulty-medium" checked>
+                            <span>Medie (Bianche)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="difficulty-hard" checked>
+                            <span>Difficili (Speciali)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Sezione Ristorante:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="include-calzoni">
+                            <span>🥟 Calzoni</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="include-drinks">
+                            <span>🍺 Bevande</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="backToHome()">Indietro</button>
+                    <button class="btn btn-primary" onclick="startCustomQuiz()">Inizia Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schermata quiz -->
+    <div id="quiz-screen" class="screen">
+        <div class="container">
+            <div class="quiz-header">
+                <img src="Stile/Desideria3.png" alt="Desideria" class="logo-tiny">
+                <div class="quiz-info">
+                    <span id="question-counter">Domanda 1/15</span>
+                    <span id="score">Punteggio: 0</span>
+                </div>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer-bar">
+                    <div id="timer-fill" class="timer-fill"></div>
+                </div>
+                <span id="timer-text" class="timer-text">15s</span>
+            </div>
+            
+            <div class="question-container">
+                <h3 id="question-text" class="question-text"></h3>
+                
+                <div id="answers-container" class="answers-container">
+                    <!-- Le risposte verranno inserite dinamicamente -->
+                </div>
+            </div>
+            
+            <div class="feedback-container" id="feedback-container">
+                <!-- Feedback dopo la risposta -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Schermata risultati -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <img src="Stile/Desideria3.png" alt="Desideria Pizzeria" class="logo-small">
+            <h2>Quiz Completato!</h2>
+            
+            <div class="results-container">
+                <div class="score-display">
+                    <div class="final-score">
+                        <span id="final-score">0</span>/<span id="total-questions">15</span>
+                    </div>
+                    <p id="score-message" class="score-message"></p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Risposte corrette:</span>
+                        <span id="correct-answers" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Risposte sbagliate:</span>
+                        <span id="wrong-answers" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Precisione:</span>
+                        <span id="accuracy" class="stat-value">0%</span>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="backToHome()">Menu Principale</button>
+                    <button class="btn btn-primary" onclick="restartQuiz()">Riprova</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Script/questions.js"></script>
+    <script src="Script/quiz.js"></script>
+</body>
+</html>

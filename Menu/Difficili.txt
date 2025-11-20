@@ -1,0 +1,36 @@
+Stria Angy
+7,50€
+Pancetta arrotolata, spinaci, funghi freschi, scamorza e crema di pistacchio
+Pippo
+9,50€
+Specialità del Pizzaiolo
+Rock
+8,50€
+Pomodoro, mozzarella, salame piccante, pancetta affumicata, spinaci e gorgonzola
+Mediterranea
+10,00€
+Pomodoro, burrata, melanzane, funghi freschi, pomodorini e rucola
+Marlon Brando
+9,00€
+Pomodoro, mozzarella, salame piccante, pancetta affumicata, prosciutto cotto, spinaci e gorgonzola
+Desideria
+9,50€
+Specialità della casa
+Delizia
+9,00€
+Pomodoro, mozzarella, salmone, spinaci e radicchio
+Del Capo
+8,50€
+Pomodoro, mozzarella, salame piccante, pancetta affumicata, cipolla e gorgonzola
+Così Così
+9,00€
+Pomodoro, mozzarella, gorgonzola, peperoni, broccoli, pancetta affumicata, wurstel e salame piccante
+Buffalo Bill
+8,00€
+Pomodoro, mozzarella, bufala, pomodorini e grana
+Romana
+7,50€
+Pomodoro, mozzarella, acciughe, capperi e origano
+Primavera
+8,00€
+Pomodoro, mozzarella, pomodoro a fette, capperi, acciughe e origano
